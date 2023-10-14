@@ -1,14 +1,17 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Schema as MongoSchema, Types } from 'mongoose';
+import { Reference } from 'src/reference/reference';
 
-export type CatDocument = HydratedDocument<Jamaah>;
+export type JamaahDocument = HydratedDocument<Jamaah>;
 
 @Schema()
 export class Jamaah {
   @Prop()
   name: string;
 
-  @Prop()
+  @Prop({
+    default: 0,
+  })
   deposit: number;
 
   @Prop({
@@ -25,7 +28,13 @@ export class Jamaah {
     default: null,
   })
   deletedAt: Date;
+
+  @Prop({
+    required: true,
+    type: [MongoSchema.Types.ObjectId],
+    ref: Reference.periodeJamaahRef,
+  })
+  periode: Types.ObjectId;
 }
 
 export const JamaahSchema = SchemaFactory.createForClass(Jamaah);
-export const jamaahRef = 'Jamaah';

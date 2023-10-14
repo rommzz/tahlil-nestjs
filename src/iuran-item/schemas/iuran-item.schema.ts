@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Schema as MongoSchema, Types } from 'mongoose';
-import { jamaahRef } from 'src/jamaah/schemas/jamaah.schema';
+import { Reference } from 'src/reference/reference';
 
 export type IuranItemDocument = HydratedDocument<IuranItem>;
 
@@ -8,20 +8,24 @@ export type IuranItemDocument = HydratedDocument<IuranItem>;
 export class IuranItem {
   @Prop({
     type: MongoSchema.Types.ObjectId,
-    ref: jamaahRef,
+    ref: Reference.jamaahRef,
   })
   jamaah: Types.ObjectId;
 
-  @Prop()
-  iuran;
-
-  @Prop()
-  value: number;
+  @Prop({
+    type: MongoSchema.Types.ObjectId,
+    ref: Reference.iuranRef,
+  })
+  iuran: Types.ObjectId;
 
   @Prop({
-    default: false,
+    type: MongoSchema.Types.ObjectId,
+    ref: Reference.periodeRef,
   })
-  isArrears: boolean;
+  periode: Types.ObjectId;
+
+  @Prop({ default: 0 })
+  value: number;
 
   @Prop({
     required: true,
@@ -33,4 +37,3 @@ export class IuranItem {
 }
 
 export const IuranItemSchema = SchemaFactory.createForClass(IuranItem);
-export const iuranItemRef = 'IuranItem';

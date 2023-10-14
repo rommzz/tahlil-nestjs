@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Schema as MongoSchema, Types } from 'mongoose';
-import { iuranItemRef } from 'src/iuran-item/schemas/iuran-item.schema';
+import { Reference } from 'src/reference/reference';
 
 export type PeriodeDocument = HydratedDocument<Periode>;
 
@@ -42,15 +42,31 @@ export class Periode {
   @Prop({
     required: true,
     type: [MongoSchema.Types.ObjectId],
-    ref: iuranItemRef,
+    ref: Reference.iuranRef,
   })
-  iuran: Types.ObjectId;
+  iuran: Types.ObjectId[];
 
   @Prop({
     required: true,
   })
   createdAt: Date;
+
+  @Prop({
+    required: true,
+  })
+  arisan: number;
+
+  @Prop({
+    required: true,
+  })
+  kematian: number;
+
+  @Prop({
+    required: true,
+    type: [MongoSchema.Types.ObjectId],
+    ref: Reference.jamaahRef,
+  })
+  listJamaah: Types.ObjectId[];
 }
 
 export const PeriodeSchema = SchemaFactory.createForClass(Periode);
-export const periodeRef = 'Periode';

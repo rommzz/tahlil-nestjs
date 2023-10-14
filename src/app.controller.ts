@@ -9,16 +9,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Get('sam')
-  async getHelloSam(@Body('name') name: string, @Res() res: Response) {
-    const data = new Promise((resolve, rej) => {
-      const jsonData = {
-        data: this.appService.getHelloSam(name),
-      };
-      resolve(jsonData);
-    });
-
-    res.status;
-  }
 }

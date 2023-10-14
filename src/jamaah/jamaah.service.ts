@@ -26,8 +26,13 @@ export class JamaahService {
     }
   }
 
-  findAll() {
-    return `This action returns all jamaah`;
+  async findAll() {
+    try {
+      const res = await this.jamaahModel.find();
+      return res;
+    } catch (error) {
+      return error;
+    }
   }
 
   findOne(id: number) {
@@ -36,9 +41,13 @@ export class JamaahService {
 
   async update(id: string, updateJamaahDto: UpdateJamaahDto) {
     try {
-      const jamaah = await this.jamaahModel.findByIdAndUpdate(id, updateJamaahDto, {
-        new: true,
-      })
+      const jamaah = await this.jamaahModel.findByIdAndUpdate(
+        id,
+        updateJamaahDto,
+        {
+          new: true,
+        },
+      );
       const res: SuccessResponse = {
         message: `Jamaah ${jamaah.name} berhasil diubah`,
       };

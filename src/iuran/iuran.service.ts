@@ -5,7 +5,10 @@ import { UpdateIuranDto } from './dto/update-iuran.dto';
 @Injectable()
 export class IuranService {
   create(createIuranDto: CreateIuranDto) {
-    return 'This action adds a new iuran';
+    if (createIuranDto.isNewPeriod) {
+      return 'baru';
+    }
+    return createIuranDto;
   }
 
   findAll() {
