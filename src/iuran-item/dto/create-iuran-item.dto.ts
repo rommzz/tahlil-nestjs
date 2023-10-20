@@ -12,6 +12,7 @@ export class CreateIuranItemDto {
   readonly jamaahId: string;
 
   @IsArray()
+  @IsOptional()
   readonly pastIuranItem?: string[];
 
   //nullabel number
@@ -22,4 +23,8 @@ export class CreateIuranItemDto {
   @IsNumber()
   @IsOptional()
   readonly deposit?: number;
+
+  @IsNumber()
+  @IsNotEmpty({ message: 'jumlah iuran tidak boleh kosong' })
+  readonly iuran?: number;
 }
