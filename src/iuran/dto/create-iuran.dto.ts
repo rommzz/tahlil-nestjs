@@ -4,15 +4,10 @@ import {
   IsArray,
   IsBoolean,
   IsDate,
-  IsDateString,
-  IsISO8601,
   IsNotEmpty,
-  IsNumber,
-  IsOptional,
   IsString,
   ValidateIf,
-  ValidateNested,
-  isNotEmpty,
+  ValidateNested
 } from 'class-validator';
 import { CreateIuranItemDto } from 'src/iuran-item/dto/create-iuran-item.dto';
 import { PeriodNew } from './create-new-period.dto';

@@ -6,16 +6,6 @@ export type PeriodeDocument = HydratedDocument<Periode>;
 
 @Schema()
 export class Periode {
-  @Prop({
-    required: true,
-    validate: {
-      validator: (v: number) => {
-        return v > 0 || !!v;
-      },
-      message: 'index tidak boleh kosong',
-    },
-  })
-  index: number;
 
   @Prop({
     required: true,
@@ -28,15 +18,7 @@ export class Periode {
   })
   startDate: Date;
 
-  @Prop({
-    required: true,
-    validate: {
-      validator: (v: string) => {
-        return v.length > 0 || !!v;
-      },
-      message: 'Tanggal mulai boleh kosong',
-    },
-  })
+  @Prop()
   endDate: Date;
 
   @Prop({
@@ -56,9 +38,7 @@ export class Periode {
   })
   arisan: number;
 
-  @Prop({
-    required: true,
-  })
+  @Prop()
   kematian: number;
 
   @Prop({

@@ -10,33 +10,36 @@ import { IJamaah } from './interface/jamaah.interface';
 export class JamaahService {
   constructor(@InjectModel('Jamaah') private jamaahModel: Model<IJamaah>) {}
 
-  async create(createJamaahDto: CreateJamaahDto): Promise<SuccessResponse> {
+  async create(createJamaahDto: CreateJamaahDto): Promise<boolean | null> {
     try {
       const jamaah = new this.jamaahModel(createJamaahDto);
       await jamaah.save();
       const res: SuccessResponse = {
         message: `Jamaah ${createJamaahDto.name} berhasil ditambahkan`,
       };
-      return res;
+      return true;
     } catch (error) {
       const res: SuccessResponse = {
         message: `Jamaah ${createJamaahDto.name} gagal ditambahkan`,
       };
-      return res;
+      throw new Error(error);
     }
   }
-
-  async findAll() {
+  async findAll(): Promise<Array<IJamaah>> {
     try {
       const res = await this.jamaahModel.find();
       return res;
     } catch (error) {
-      return error;
+      throw new Error()
     }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} jamaah`;
+  async findOne(id: string): Promise<IJamaah | null> {
+    try {
+      return await this.jamaahModel.findById(id);
+    } catch (error) {
+     throw new Error(error) 
+    }
   }
 
   async update(id: string, updateJamaahDto: UpdateJamaahDto) {
