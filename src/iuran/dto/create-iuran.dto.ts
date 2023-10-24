@@ -7,7 +7,7 @@ import {
   IsNotEmpty,
   IsString,
   ValidateIf,
-  ValidateNested
+  ValidateNested,
 } from 'class-validator';
 import { CreateIuranItemDto } from 'src/iuran-item/dto/create-iuran-item.dto';
 import { PeriodNew } from './create-new-period.dto';
@@ -31,6 +31,7 @@ export class CreateIuranDto {
   readonly periodId?: string;
 
   @ValidateIf((o) => o.isNewPeriod === true)
+  @IsNotEmpty({ message: 'periodData tidak boleh kosong jika periode baru' })
   @ValidateNested({ each: true })
   @Type(() => PeriodNew)
   readonly periodData?: PeriodNew;

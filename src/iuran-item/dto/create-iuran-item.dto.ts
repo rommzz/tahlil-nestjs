@@ -7,7 +7,7 @@ import {
 } from 'class-validator';
 
 export class CreateIuranItemDto {
-  @IsString({ message: 'jamah harus berupa string' })
+  @IsString({ message: 'jamaah harus berupa string' })
   @IsNotEmpty({ message: 'jamaah tidak boleh kosong' })
   readonly jamaahId: string;
 
@@ -15,7 +15,6 @@ export class CreateIuranItemDto {
   @IsOptional()
   readonly pastIuranItem?: string[];
 
-  //nullabel number
   @IsNumber()
   @IsOptional()
   readonly kematian?: number;
@@ -25,6 +24,6 @@ export class CreateIuranItemDto {
   readonly deposit?: number;
 
   @IsNumber()
-  @IsNotEmpty({ message: 'jumlah iuran tidak boleh kosong' })
-  readonly iuran?: number;
+  @IsNotEmpty({ message: 'jumlah iuran tidak boleh kosong (Rp)' })
+  readonly iuran: number;
 }

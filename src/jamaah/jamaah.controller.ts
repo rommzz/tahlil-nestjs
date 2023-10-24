@@ -28,12 +28,12 @@ export class JamaahController {
     try {
       const data = await this.jamaahService.findAll();
       if (data.length == 0) {
-        throw NotFoundException
+        throw NotFoundException;
       }
-     
+
       return new SuccessInterceptor(data, 'Data jamaah berhasil ditemukan');
     } catch (error) {
-      throw new InternalServerErrorException(error)
+      throw new InternalServerErrorException(error);
     }
   }
 
@@ -41,16 +41,19 @@ export class JamaahController {
   async findOne(@Param('id') id: string) {
     try {
       const res = await this.jamaahService.findOne(id);
-      
+
       if (res == null) {
         throw new NotFoundException(`Jamaah dengan id ${id} tidak ditemukan`);
       }
-      return new SuccessInterceptor(res, `Jamaah dengan id ${id} berhasil ditemukan`);
+      return new SuccessInterceptor(
+        res,
+        `Jamaah dengan id ${id} berhasil ditemukan`,
+      );
     } catch (error) {
       if (error instanceof NotFoundException) {
-        throw error
+        throw error;
       }
-      throw new InternalServerErrorException(error) 
+      throw new InternalServerErrorException(error);
     }
   }
 

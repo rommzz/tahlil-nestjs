@@ -30,7 +30,7 @@ export class JamaahService {
       const res = await this.jamaahModel.find();
       return res;
     } catch (error) {
-      throw new Error()
+      throw new Error();
     }
   }
 
