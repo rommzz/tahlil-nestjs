@@ -10,19 +10,19 @@ export class IuranItem {
     type: MongoSchema.Types.ObjectId,
     ref: Reference.jamaahRef,
   })
-  jamaah: Types.ObjectId;
+  jamaahId: Types.ObjectId;
 
   @Prop({
     type: MongoSchema.Types.ObjectId,
     ref: Reference.iuranRef,
   })
-  iuran: Types.ObjectId;
+  iuranId: Types.ObjectId;
 
   @Prop({
     type: MongoSchema.Types.ObjectId,
     ref: Reference.periodeRef,
   })
-  periode: Types.ObjectId;
+  periodId: Types.ObjectId;
 
   @Prop({ default: 0 })
   value: number;

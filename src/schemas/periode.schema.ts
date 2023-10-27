@@ -26,12 +26,7 @@ export class Periode {
     type: [MongoSchema.Types.ObjectId],
     ref: Reference.iuranRef,
   })
-  iuran: Types.ObjectId[];
-
-  @Prop({
-    required: true,
-  })
-  createdAt: Date;
+  iuranId: Types.ObjectId[];
 
   @Prop({
     required: true,
@@ -46,7 +41,7 @@ export class Periode {
     type: [MongoSchema.Types.ObjectId],
     ref: Reference.jamaahRef,
   })
-  listJamaah: Types.ObjectId[];
+  registeredJamaah: Types.ObjectId[];
 }
 
 export const PeriodeSchema = SchemaFactory.createForClass(Periode);

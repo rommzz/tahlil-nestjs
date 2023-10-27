@@ -20,9 +20,9 @@ export class IuranController {
   @Post()
   async create(@Body() createIuranDto: CreateIuranDto) {
 		try {
-			await this.iuranService.create(createIuranDto);
+			return await this.iuranService.create(createIuranDto);
 		} catch (error) {
-			console.log(error);
+			console.log('cok', error);
 			
 			throw new InternalServerErrorException(error);
 		}

@@ -30,7 +30,7 @@ export class Iuran {
     type: MongoSchema.Types.ObjectId,
     ref: Reference.periodeRef,
   })
-  period: Types.ObjectId;
+  periodId: Types.ObjectId;
 }
 
 export const IuranSchema = SchemaFactory.createForClass(Iuran);

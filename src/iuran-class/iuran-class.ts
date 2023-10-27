@@ -18,7 +18,7 @@ export class IuranClass {
     data.iuranItem.forEach((item) => {
       totalIuran = totalIuran + item.iuran;
     });
-		const iuranItems: string [] = data.iuranItem.map(v =>)
+		// const iuranItems: string [] = data.iuranItem.map(v =>)
     const iuran = new this.iuranModel({
       period: data.periodId,
       place: data.locationId,

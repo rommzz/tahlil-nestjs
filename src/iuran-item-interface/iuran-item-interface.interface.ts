@@ -1,10 +1,10 @@
 import { Document } from "mongoose";
 
 export interface IIuranItem extends Document{
-      jamaah: string,
-      iuran: string,
-      periode: string,
-      value: number,
+      jamaahId: string,
+      iuranId: string,
+      periodId: string,
+      iuran: number,
       isPaid: boolean,
       charity?: number,
 }

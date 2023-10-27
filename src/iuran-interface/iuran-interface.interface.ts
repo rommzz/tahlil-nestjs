@@ -5,5 +5,5 @@ export interface IIuran extends Document {
   readonly totalIuran: number;
   readonly iuranItems: string[];
   readonly place: string;
-  readonly period: string;
+  readonly periodId: string;
 }
