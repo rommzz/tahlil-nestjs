@@ -1,17 +1,16 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-	InternalServerErrorException,
+  Get,
+  InternalServerErrorException,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
-import { IuranService } from './iuran.service';
 import { CreateIuranDto } from './dto/create-iuran.dto';
 import { UpdateIuranDto } from './dto/update-iuran.dto';
-import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
+import { IuranService } from './iuran.service';
 
 @Controller('iuran')
 export class IuranController {
@@ -19,14 +18,13 @@ export class IuranController {
 
   @Post()
   async create(@Body() createIuranDto: CreateIuranDto) {
-		try {
-			return await this.iuranService.create(createIuranDto);
-		} catch (error) {
-			console.log('cok', error);
-			
-			throw new InternalServerErrorException(error);
-		}
-		
+    try {
+      return await this.iuranService.create(createIuranDto);
+    } catch (error) {
+      console.log('cok', error);
+
+      throw new InternalServerErrorException(error);
+    }
   }
 
   @Get()

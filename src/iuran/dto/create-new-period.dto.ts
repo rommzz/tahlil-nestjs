@@ -1,9 +1,7 @@
-import { Transform } from 'class-transformer';
-import { IsDate, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class PeriodNew {
   @IsNumber({})
   @IsNotEmpty({ message: 'arisan harus diisi' })
   readonly arisan: number;
-
 }

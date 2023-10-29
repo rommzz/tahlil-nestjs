@@ -38,7 +38,7 @@ export class JamaahService {
     try {
       return await this.jamaahModel.findById(id);
     } catch (error) {
-     throw new Error(error) 
+      throw new Error(error);
     }
   }
 

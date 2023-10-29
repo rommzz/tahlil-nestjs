@@ -6,7 +6,6 @@ export type PeriodeDocument = HydratedDocument<Periode>;
 
 @Schema()
 export class Periode {
-
   @Prop({
     required: true,
     validate: {
